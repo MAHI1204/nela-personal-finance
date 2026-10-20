@@ -1,5 +1,13 @@
 # Changes
 
+## Unreleased
+
+- Add a short iPhone/Android installation guide near the top of the README.
+- Add recorded-actual analysis with gross purchases, returns, income, net spending and daily purchase averages.
+- Compare equal elapsed days across budget cycles, with category entry drill-down for both windows.
+- Add merchant gross totals, purchase frequency, spending shares and entry drill-down.
+- Keep currencies separate and distinguish actuals from forecasts, transfers and missing history.
+
 ## 1.1.0
 
 - Add monthly planning with fixed/flexible category budgets and independent rollover policies, retaining earlier terms.

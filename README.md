@@ -2,6 +2,26 @@
 
 Nela is an installable web app for iPhone and desktop. All personal records and receipt photos are stored in IndexedDB on the device. It does not use ChatGPT hosting, sign-in, a cloud database, remote fonts, analytics, bank APIs or AI APIs at runtime.
 
+## Add Nela to your phone
+
+Open your **deployed HTTPS app URL** on your phone (not the GitHub source page).
+
+- **iPhone:** in Safari, tap **Share → Add to Home Screen**, enable **Open as Web App** if shown, then tap **Add**.
+- **Android:** in Chrome, tap **⋮ → Install and create shortcut → Install** (older versions may show **Add to home screen**).
+- Open Nela from its new icon while online and wait for **Ready for offline use on this device**. Then test reopening it in Airplane Mode.
+
+Use the installed app consistently: each device/browser has its own ledger, with no automatic sync. Export a JSON backup regularly. See [the full installation checklist](#first-run-and-iphone-installation) below.
+
+Official instructions: [Apple](https://support.apple.com/guide/iphone/iphea86e5236/ios) · [Google Chrome](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&hl=en).
+
+## Detailed analysis
+
+In **Analysis**, choose the currency and month using the existing header controls. The selected budget cycle shows recorded actuals through today (or the cycle end for a completed cycle): gross purchases, received returns, net spending, income, income minus net spending, and average gross purchases per elapsed calendar day. Future cycles have no actuals yet.
+
+Compare the same number of elapsed days with the previous cycle, capped to the shorter cycle. Category changes expand into the entries from both comparison windows. Merchant totals show gross purchases, frequency, share of gross spending and expandable entries. Merchant names are grouped ignoring case and outer spaces; missing names have a separate bucket.
+
+Transfers and card repayments are excluded from spending; card purchases are included. Returns reduce net spending when received and are shown separately from income. EUR and INR remain separate. A percentage comparison is unavailable when prior net spending is zero or negative. Missing history is not inferred, income minus spending is not a bank balance, and merchant totals are gross rather than refund-adjusted. The existing forecast and loan scenarios remain separate from these recorded actuals.
+
 ## What is included
 
 - EUR and INR bank, cash, savings and credit-card accounts.
