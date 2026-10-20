@@ -19,6 +19,36 @@ Nela is an installable web app for iPhone and desktop. All personal records and 
 - A Home Screen icon, a relative-path manifest and a cached app shell for offline operation.
 - Legacy imports of older Nela personal JSON backups. Cloud photo references are explicitly removed after confirmation because those backups do not contain image bytes.
 
+## Version 1.1 — monthly planning and quick capture
+
+Before updating, export a full personal backup and close other Nela tabs. Reopen the app online and use the **Update app** banner when it appears. The upgrade reads earlier version-2 ledgers and supplies defaults without deleting records; the next save uses data format 3. Older application versions reject that newer format rather than saving a truncated ledger. Keep the same URL and browser context to retain the local database.
+
+### Quick entry
+
+The amount keypad is available in the entry dialog. You can save an expense or income draft as a favourite; favourite buttons reopen it for review rather than silently posting another transaction. Enter a merchant name to recall its most recent matching account and category in the same currency. Amounts are never converted by merchant matching.
+
+### Monthly plan
+
+- Set each category to fixed or flexible and choose reset, positive carryover, or positive-and-negative carryover.
+- New budget terms begin at the selected budget cycle; previous saved terms are retained for subsequent rollover calculations. Deleting a budget removes its terms/history.
+- The daily allowance uses remaining flexible allocations minus positive spending in unbudgeted categories, divided by remaining days including today. It is a planning figure, not proof of bank affordability.
+- Compare full budget cycles and inspect the transactions behind a category. An active cycle may be incomplete, so the comparison explicitly warns about that.
+- The calendar shows actual/expected entries and schedules. Low-balance warnings are in-app projections based on recorded starting balances, future entries and unconfirmed schedules. Set each non-credit account’s warning threshold in Accounts. No push notifications are sent.
+- Subscriptions and annual bills show a monthly equivalent using 12 months or 52 weeks. This is informational; it does not automatically reserve funds.
+- Purchase/savings/loan what-if inputs change displayed scenario results only. They do not create transactions or initiate payments.
+
+### Returns and reconciliation
+
+Track one expected-return total against an expense, choosing refund or reimbursement. Only matching received return types reduce that tracker. Expected money is excluded from balances and the cash forecast. Received returns must use the original expense’s currency and category, cannot predate it, and cannot exceed its gross amount in total. They reduce net spending when received and are not salary income. Cross-currency returns are not converted automatically.
+
+Statement reconciliation saves the statement and calculated balance at an end-of-day date, plus their difference. It does not edit account balances. If older entries change afterward, that checkpoint is marked as changed. Review pending transactions, missing entries and duplicates yourself; Nela cannot infer an unknown bank transaction from a balance difference.
+
+### Companion iPhone Shortcut
+
+Open **Data & settings → Siri & Back Tap capture** for the complete setup guide and paste-review form. The recommended Shortcut asks for a number and copies text such as `NELA amount=12.50&currency=EUR`. Open the installed Nela app, paste that text, review and save. This requires one-time manual setup in Apple Shortcuts; no signed Shortcut or native integration is installed automatically.
+
+An optional `#capture?amount=12.50&currency=EUR` URL handoff is also supported. The fragment is processed locally and cleared, and never saves a transaction automatically. iOS may open Safari rather than the installed PWA, which can use a different local ledger. Use the clipboard method to avoid that ambiguity. Voice recognition and Siri availability depend on the device; they are not supplied by Nela’s offline code.
+
 ## First run and iPhone installation
 
 1. Deploy the app to HTTPS, for example GitHub Pages, and open the resulting address in Safari.
@@ -27,7 +57,7 @@ Nela is an installable web app for iPhone and desktop. All personal records and 
 4. Open Nela from its icon while online and confirm it is ready for offline use there too. Safari and the installed app may use different storage contexts; do your financial work consistently in the installed app.
 5. Add an account, record a small test entry, then enable Airplane Mode. Close and reopen Nela from its icon, add another entry, reopen again and verify that both entries remain. Export a backup and check it before entering substantial data.
 
-The service worker caches application files only. Financial records and photos are kept in IndexedDB, separately from the cached files. Offline operation requires a successful first installation and retained browser storage. Clearing website data, removing the app, storage eviction, a new origin/address or device loss may make local data unavailable. Browser persistence is requested only through the button in Data & settings and is not guaranteed. Backups remain necessary. This version is a PWA, not an App Store binary; native widgets, Siri and Face ID protection are not implemented.
+The service worker caches application files only. Financial records and photos are kept in IndexedDB, separately from the cached files. Offline operation requires a successful first installation and retained browser storage. Clearing website data, removing the app, storage eviction, a new origin/address or device loss may make local data unavailable. Browser persistence is requested only through the button in Data & settings and is not guaranteed. Backups remain necessary. This version is a PWA, not an App Store binary; native widgets and Face ID protection are not implemented. Siri and Back Tap use the separately configured companion Shortcut described above.
 
 ## GitHub project and deployment
 
@@ -92,6 +122,6 @@ CSV duplicate detection uses account, date, amount and description. Identical le
 
 Automated tests cover financial arithmetic, calendar boundaries, CSV parsing, snapshot export isolation, actual IndexedDB-style transaction flows through fake-indexeddb, stale-revision rejection, receipt backup/restoration and static offline configuration. TypeScript checking and the standalone production build are included.
 
-Physical iPhone/Safari testing and real browser service-worker offline testing have not been performed in this execution environment. Follow the Airplane Mode checklist above. Local backups are unencrypted. There is no PIN/biometric app lock, cloud sync, automatic bank integration, receipt OCR, push notifications, unequal split editor or concurrent group merge. The working name Nela has not been checked for trademark/domain/App Store availability.
+Physical iPhone/Safari testing and real browser service-worker offline testing have not been performed in this execution environment. Follow the Airplane Mode checklist above. Local backups are unencrypted. There is no PIN/biometric app lock, cloud sync, automatic bank integration, receipt OCR, push notifications, unequal split editor or concurrent group merge. Statement differences are identified, not automatically repaired. The working name Nela has not been checked for trademark/domain/App Store availability.
 
 Third-party dependency licenses are collected in `THIRD_PARTY_LICENSES.txt`. A license for the project's own source has not yet been selected; public source visibility alone does not grant an open-source license.

@@ -3,3 +3,5 @@ dist/
 *.tsbuildinfo
 .DS_Store
 *.personal-backup.json
+
+.test-runtime/
