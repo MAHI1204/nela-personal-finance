@@ -1,6 +1,18 @@
 # Changes
 
-## Unreleased
+## 1.2.0
+
+- Add calendar/salary reports with arbitrary comparison months, 1–6-month trends and 3/6-month recorded-history baselines.
+- Add optional subcategories, essential/optional and recurring/one-time labels, amount/history spending alerts, category drill-down and merchant change drivers.
+- Add local CSV reports and browser PDF/print views for monthly reports, savings and trips.
+- Add direct/reference-price discount entry, refund adjustments, monthly/yearly breakdowns and pending/received cashback.
+- Add trip budgets, split purchase allocations, own-share labels, separate EUR/INR reports and an optional entered-rate EUR summary.
+- Add annual-bill funding reservations and subscription price/cancellation history.
+- Add calendar-file reminders for supported calendar clients while Nela is closed; direct web push still requires a server and is not implemented.
+- Upgrade older ledgers to format 4 with defaults, preserving existing records and receipt-inclusive backups.
+- Extend arithmetic, migration, export and rendered-component tests.
+
+## Earlier analysis update
 
 - Add a short iPhone/Android installation guide near the top of the README.
 - Add recorded-actual analysis with gross purchases, returns, income, net spending and daily purchase averages.

@@ -14,13 +14,59 @@ Use the installed app consistently: each device/browser has its own ledger, with
 
 Official instructions: [Apple](https://support.apple.com/guide/iphone/iphea86e5236/ios) · [Google Chrome](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&hl=en).
 
-## Detailed analysis
+## Version 1.2 — reports, savings and trips
 
-In **Analysis**, choose the currency and month using the existing header controls. The selected budget cycle shows recorded actuals through today (or the cycle end for a completed cycle): gross purchases, received returns, net spending, income, income minus net spending, and average gross purchases per elapsed calendar day. Future cycles have no actuals yet.
+Before updating, export a full personal JSON backup and close other Nela tabs. Reopen the app online and use **Update app** when offered. This release reads format-2 and format-3 ledgers and supplies new defaults without deleting records. The next save uses format 4; earlier application versions reject that format. Keep the same app URL and browser context.
 
-Compare the same number of elapsed days with the previous cycle, capped to the shorter cycle. Category changes expand into the entries from both comparison windows. Merchant totals show gross purchases, frequency, share of gross spending and expandable entries. Merchant names are grouped ignoring case and outer spaces; missing names have a separate bucket.
+### Monthly reports
 
-Transfers and card repayments are excluded from spending; card purchases are included. Returns reduce net spending when received and are shown separately from income. EUR and INR remain separate. A percentage comparison is unavailable when prior net spending is zero or negative. Missing history is not inferred, income minus spending is not a bank balance, and merchant totals are gross rather than refund-adjusted. The existing forecast and loan scenarios remain separate from these recorded actuals.
+Open **Analysis**. Reports default to calendar months, with a switch to salary cycles based on your configured cycle start day. Choose any report month and any comparison month, including another year. Show a side-by-side comparison, the previous 1–6 months, or both, with a 3- or 6-month historical average.
+
+- **Equal elapsed days** compares the first available matching number of days. The pairwise comparison caps to the shorter of its two windows. Trend and baseline windows all cap to their shortest available window. Exact end-exclusive dates are shown.
+- **Complete windows** uses the full recorded actuals available in each period; an ongoing month remains incomplete. Future-dated entries and unconfirmed schedules are excluded in both modes.
+- Category reports show actual, budget, remaining allocation, spending share, comparison amounts, change and history average. Expand a category for transactions and optional subcategories.
+- Essential/optional and recurring/one-time sections use your purchase classifications; linked returns inherit the purchase classifications. Unclassified entries remain visible. Existing schedule-linked purchases default to recurring in reports.
+- Merchant changes explain differences between the two comparison windows using net spending, including linked returns.
+- Set category amount limits and historical percentage thresholds in **Spending alert rules**. Historical flags need at least three previous windows with recorded activity and a positive category average; the default threshold is 25% above that average. Missing windows are excluded from averages, never inferred to be zero. Recorded activity does not certify completeness.
+- Calendar budget comparisons use the latest monthly base terms effective before the period end, without salary-cycle carryover. Salary-cycle budget comparisons include rollover. These are allocations, not account balances.
+
+Use **Export CSV** or **PDF / Print**. The latter opens a printable report and your browser's print dialog: choose Save as PDF or the PDF/share option available on your phone. Pop-ups must be allowed. Exports are generated on the device and contain private records; they are not full backups.
+
+### Purchase details and discount tracking
+
+In a purchase entry, expand **Optional: subcategory, discounts and trip splits**. Subcategories are optional free text. Set essential/optional and recurring/one-time labels if useful.
+
+The main amount is always the actual amount paid. Enter either a discount amount, a reference price, or both. When both are supplied, reference price minus actual paid must equal the discount. Choose coupon, sale, loyalty or other. Reference prices are user records, not verified market prices.
+
+Open **Savings & renewals** for monthly and yearly recorded purchase discounts, breakdowns by type/category/merchant, cashback, annual-bill plans and subscriptions. Product refunds reverse discounts proportionally when received, with cumulative minor-unit rounding; reimbursements do not reverse a purchase discount. A historical period can therefore show a negative discount adjustment. Discounts do not increase account balances. Unused budget and reserved money are not added to discount totals.
+
+Track cashback as an expected amount, optionally linked to a purchase. Pending cashback is excluded from balances. **Record receipt** creates an actual income transaction and allows partial receipts. If it already exists in a statement import, edit that income entry and link it to the cashback tracker instead of entering it again. Tracker outstanding amounts are as of today; monthly/yearly received totals use receipt dates.
+
+### Trip budgets and reports
+
+Open **Trips & reports** and create a trip, such as an India visit. Enter inclusive travel dates, EUR/INR budgets, and optional category budgets. Trip tags, rather than transaction dates, define membership, so pre-departure flights, later refunds and trips crossing months/years remain in one report.
+
+Allocate purchases through their optional details. Split one purchase across trips and ordinary spending; allocations must fit within the actual purchase amount. Each allocation has an optional own share, defaulting to its full amount. Own shares cannot exceed the amount paid. Each transaction remains a single ledger entry and still appears in its normal monthly report.
+
+Reports show paid-by-you amounts, entered own shares before refunds, received refunds/reimbursements, net paid, budget remaining, tracked expected returns, discounts, categories, daily entries and before/during/after-travel phases. They cover your allocated ledger records, not all participants' expenses; there is no automatic group-ledger integration or settlement. Budget remaining uses net paid. Linked returns are allocated proportionally across original splits and ordinary spending using cumulative rounding.
+
+EUR and INR stay separate. Optionally enter **INR for 1 EUR** to show a combined EUR summary. INR totals are divided by that entered rate and rounded once to cents. This reporting assumption is displayed; it is not a live market rate and does not convert account entries. Trips can be archived while retaining their history. Use CSV or PDF / Print for a separate trip report.
+
+### Annual bills and subscription history
+
+Annual-bill plans track a due date, target and amount already reserved. The monthly contribution calculation divides the remaining amount across this month through the due month, rounding up to minor units. Overdue plans show the amount remaining due now. Update the reservation as you set money aside. It labels existing cash and creates no account transfer. Reservations selected for deduction reduce available cash in the forecast alongside reserved goals; do not reserve the same cash twice. Record the actual bill separately, then update the plan's amount/date. A funding plan does not automatically create a recurring schedule.
+
+Subscriptions use recurring expense schedules. Editing their amount/frequency records the old and new terms dated today and changes unconfirmed occurrences; historical transactions are unchanged. Annual equivalents use 12 months or 52 weeks. Record an optional cancellation deadline. Confirming cancellation stops the schedule in Nela, but does not contact or cancel with a provider. Schedule currency cannot be changed; create a separate schedule for a different currency.
+
+### Reminders when Nela is closed
+
+In **Savings & renewals → Reminders while Nela is closed**, export an `.ics` calendar file containing the next 12 months of active expense-schedule occurrences, cancellation deadlines and annual-bill dates. Select advance notice of 0, 1, 3, 7, 14 or 30 days. Events are at 09:00 in the calendar's local time, with a due-date alarm and an advance alarm when selected.
+
+Import the file into a calendar that supports event/alert import and allow its notifications. If the phone only previews the file, use that calendar's desktop import workflow and sync it to the phone. Verify the time and alerts on an imported event and test one reminder before relying on it; calendar clients may alter or discard imported alarms.
+
+This is a snapshot, not a live calendar feed. Use a dedicated Nela calendar and replace old imported events after changing schedules; repeated imports may create duplicates. The file contains event names/dates, not balances or payment amounts. Your calendar may sync those details to its provider.
+
+**Direct Nela web push is not implemented.** The static GitHub Pages app has no push server. Closed-app alerts here are supplied by your calendar after import, subject to its settings and support; no closed-browser JavaScript timer is claimed to run. Standards reference: [iCalendar / VALARM, RFC 5545](https://www.rfc-editor.org/rfc/rfc5545.html). Web-push architecture: [Apple developer documentation](https://developer.apple.com/documentation/usernotifications/sending-web-push-notifications-in-web-apps-and-browsers).
 
 ## What is included
 
@@ -31,7 +77,7 @@ Transfers and card repayments are excluded from spending; card purchases are inc
 - Reviewed receipt-photo attachments (JPG, PNG or WebP, under 5 MB each). Amounts are entered manually; OCR is not included.
 - Weekly, monthly and yearly recurring income, bills and transfers, posted only when confirmed.
 - Category budgets, salary-cycle settings, savings goals and emergency-fund reservations.
-- Cash forecast until payday, category spending breakdowns and six-month spending chart.
+- Cash forecast until payday, category spending reports and configurable 1–6-month trends.
 - Loan scenario comparison with a fixed nominal annual rate, one extra principal payment and an optional percentage prepayment fee.
 - Separate shared-expense groups with exact equal splits, balances and settlement suggestions.
 - Complete personal JSON backups including linked photos, plus CSV export.
@@ -41,7 +87,7 @@ Transfers and card repayments are excluded from spending; card purchases are inc
 
 ## Version 1.1 — monthly planning and quick capture
 
-Before updating, export a full personal backup and close other Nela tabs. Reopen the app online and use the **Update app** banner when it appears. The upgrade reads earlier version-2 ledgers and supplies defaults without deleting records; the next save uses data format 3. Older application versions reject that newer format rather than saving a truncated ledger. Keep the same URL and browser context to retain the local database.
+Before updating, export a full personal backup and close other Nela tabs. Reopen the app online and use the **Update app** banner when it appears. Version 1.1 originally introduced data format 3. The current release upgrades earlier ledgers to format 4 as described above. Older application versions reject that newer format rather than saving a truncated ledger. Keep the same URL and browser context to retain the local database.
 
 ### Quick entry
 
@@ -132,7 +178,7 @@ Use one current editor at a time. Importing an existing group **replaces** its l
 
 Amounts use integer cents/paise. Supported account currencies are EUR and INR, never silently combined. Transfers use the actual amounts entered on both sides. Record transfer fees as separate expenses. A negative credit-card balance means debt. Do not re-enter activity already included in an account's starting balance.
 
-Forecast = today's recorded bank/cash/savings balances + future/scheduled cash flow before payday − explicit savings reservations. It excludes unscheduled spending and card debt itself. Use a scheduled bank-to-card transfer for an expected card repayment. Overdue unconfirmed occurrences are warned about and excluded. Savings goals reserve existing cash; they are not additional assets. Budget cycle start days are limited to 1–28; payday uses the month's last day when needed.
+Forecast = today's recorded bank/cash/savings balances + future/scheduled cash flow before payday − explicit goal and annual-bill reservations. It excludes unscheduled spending and card debt itself. Use a scheduled bank-to-card transfer for an expected card repayment. Overdue unconfirmed occurrences are warned about and excluded. Savings goals and annual-bill plans reserve existing cash; they are not additional assets. Budget cycle start days are limited to 1–28; payday uses the month's last day when needed.
 
 Loan scenarios use entered nominal annual interest divided by 12, month-end payments and monthly cent rounding. A single optional extra payment and its percentage fee are modeled. Daily accrual, variable rates, lender-specific charges and tax are excluded. These are calculations from your inputs, not lender quotes or financial recommendations.
 
@@ -140,8 +186,8 @@ CSV duplicate detection uses account, date, amount and description. Identical le
 
 ## Testing and limitations
 
-Automated tests cover financial arithmetic, calendar boundaries, CSV parsing, snapshot export isolation, actual IndexedDB-style transaction flows through fake-indexeddb, stale-revision rejection, receipt backup/restoration and static offline configuration. TypeScript checking and the standalone production build are included.
+Automated tests cover financial arithmetic, calendar boundaries, CSV parsing, snapshot export isolation, actual IndexedDB-style transaction flows through fake-indexeddb, stale-revision rejection, receipt backup/restoration, format-4 migration, arbitrary report comparisons, classification, trip/discount return rounding, cashback, bill reservations, CSV/print escaping, calendar folding and static offline configuration. TypeScript checking and the standalone production build are included.
 
-Physical iPhone/Safari testing and real browser service-worker offline testing have not been performed in this execution environment. Follow the Airplane Mode checklist above. Local backups are unencrypted. There is no PIN/biometric app lock, cloud sync, automatic bank integration, receipt OCR, push notifications, unequal split editor or concurrent group merge. Statement differences are identified, not automatically repaired. The working name Nela has not been checked for trademark/domain/App Store availability.
+Physical iPhone/Safari testing, real browser service-worker offline testing, PDF print-dialog testing and calendar-client alarm delivery have not been performed in this execution environment. Automated component rendering is not a substitute for those device checks. Follow the Airplane Mode checklist above. Local backups are unencrypted. There is no PIN/biometric app lock, cloud sync, automatic bank integration, receipt OCR, push notifications, unequal split editor or concurrent group merge. Statement differences are identified, not automatically repaired. The working name Nela has not been checked for trademark/domain/App Store availability.
 
 Third-party dependency licenses are collected in `THIRD_PARTY_LICENSES.txt`. A license for the project's own source has not yet been selected; public source visibility alone does not grant an open-source license.
