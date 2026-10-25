@@ -1,5 +1,15 @@
 # Changes
 
+## 1.3.0
+
+- Dedicated Credit Cards workspace with statements, payment entry, limits, activity and reconciliation.
+- Personal Owe & Owed ledger with separate directions, partial repayments, existing balances, per-person views and paid-for-someone expense splits.
+- Atomic linked cash movements; debt principal excluded from spending and salary; validation against overpayments, currency mismatches and orphaned movements.
+- Clickable dashboard summaries and monthly Overview / Spending / Cash movements / Credit cards / Friends views, with expanded CSV and print exports.
+- Card and personal repayment dates in the monthly plan.
+- Format-5 migration and backup support, preserving format-2/3/4 records.
+- Regression tests for debt arithmetic, statements, cash forecasts, reports, schema validation, backup restoration and UI rendering.
+
 ## 1.2.0
 
 - Add calendar/salary reports with arbitrary comparison months, 1–6-month trends and 3/6-month recorded-history baselines.

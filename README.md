@@ -14,9 +14,41 @@ Use the installed app consistently: each device/browser has its own ledger, with
 
 Official instructions: [Apple](https://support.apple.com/guide/iphone/iphea86e5236/ios) · [Google Chrome](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&hl=en).
 
+## Version 1.3 — credit cards and Owe & Owed
+
+Before updating, export a personal JSON backup and close other Nela tabs. Reopen online and choose **Update app** when offered. Existing format-2, format-3 and format-4 ledgers migrate to format 5, preserving existing records and supplying empty lending/statement collections. The next save uses format 5; previous app versions reject that format. Keep your existing app URL and browser context.
+
+### Credit Cards
+
+Open **Credit Cards** in navigation. Add or edit a card account, record purchases, record a bank-to-card transfer, add issuer statements, inspect activity, or open reconciliation with that card selected. Card purchases count as expenses; repayments are transfers, never another expense. Negative opening balances represent existing card debt. Available credit is displayed separately from cash you own.
+
+Copy the closing date, due date, statement amount and minimum from your issuer's statement. Statements are checkpoints, not transactions; saving one does not change a balance. For the latest statement on or before the displayed date, tracked remaining is its amount minus credits recorded strictly after closing. Unbilled charges are recorded debits after closing, before credits. Closing-date entries count as billed. Verify issuer payment/refund allocation and minimum-payment rules yourself. Nela does not calculate card interest. Enter actual interest and fees as expenses. Do not import a card payment again when its transfer is already recorded.
+
+### Owe & Owed
+
+Keep **I owe** and **Owed to me** separate, including for the same person. Use **I borrowed**, **I lent**, **Paid for someone**, or **Add existing balance**. Choose an existing record to **I repaid** or **I received repayment**; partial repayments are supported. Each record has a person, original amount, currency, date, optional due date and note. A person's view shows both directions, record history and repayments. EUR and INR are never silently combined.
+
+Borrowing/lending cash and repayments use a bank, cash or savings account in the debt's currency. They change cash and the outstanding principal, but never salary income or spending. Existing balances create no account movement. Do not add an existing balance for borrowing/lending already recorded through a new cash movement.
+
+For **Paid for someone**, enter **their share** and **your own share**, not the full bill twice. Nela posts their share as money owed to you and your share as a category expense. Together they equal the account outflow. A credit card is also allowed for this action. Receiving their repayment settles principal without adding income or reversing your own expense.
+
+Debt account movements are linked and saved atomically with their records. Selecting one in Transactions opens Owe & Owed so it cannot be accidentally changed into ordinary income. Use **Record interest separately** for an ordinary interest expense or receipt without reducing principal. Use **Gift / forgive balance** only when forgiveness is agreed: it records a noncash principal reduction separately from repayments, changes no account/spending/salary total and makes no tax classification. New cash gifts belong in ordinary expense/income entries.
+
+Edit or delete a repayment to correct it; editing/deleting the original record rebuilds its account movements. Deleting a record also deletes its repayments, noncash adjustments and linked movements after confirmation. Remove any separately linked refunds or trackers first if they prevent deletion. Repayments cannot predate the debt, cross currencies or exceed the original amount cumulatively. Due dates do not automatically mark debts as paid.
+
+### Dashboard and monthly reports
+
+Click **Spent this month** to open the full monthly report for the selected calendar month. Click **Credit card debt**, **I owe**, **Owed to me**, or **Settled this month** to open its relevant report view. All four debt summary cards preserve the selected month and currency. The report includes **Overview**, **Spending**, **Cash movements**, **Credit cards** and **Friends**. Report-month changes update the page month selector. Choose calendar months or salary cycles inside Analysis.
+
+Spending and repayments are activity during the selected period. Debt/card/account balances are snapshots as of the period's last recorded actual date, capped to today; future months never project unposted balances. Settled-this-month is actual repayments in both directions, not the number of agreements closed. Card debt and friend lending are independent: lending funded through a card does not erase your debt to the issuer.
+
+CSV and PDF / Print monthly exports include card balances and activity, friend balances and repayments, and cash-account movements. The monthly plan lists outstanding card/personal repayment dates within its selected cycle, using today's remaining amounts. These expectations do not automatically change forecasts or post payments. Use a scheduled bank-to-card transfer to include an expected card payment in the forecast. Expected repayments from friends remain excluded until recorded.
+
+Full personal JSON backup/restore includes lending records, repayments, noncash adjustments, card statements and their linked account movements. Group exports remain separate. This release continues to store everything on this device; cross-device cloud sync is not implemented.
+
 ## Version 1.2 — reports, savings and trips
 
-Before updating, export a full personal JSON backup and close other Nela tabs. Reopen the app online and use **Update app** when offered. This release reads format-2 and format-3 ledgers and supplies new defaults without deleting records. The next save uses format 4; earlier application versions reject that format. Keep the same app URL and browser context.
+Before updating, export a full personal JSON backup and close other Nela tabs. Reopen the app online and use **Update app** when offered. This release originally read format-2 and format-3 ledgers and supplies new defaults without deleting records. That release saved format 4; the current release saves format 5 as described above. Keep the same app URL and browser context.
 
 ### Monthly reports
 
@@ -87,7 +119,7 @@ This is a snapshot, not a live calendar feed. Use a dedicated Nela calendar and 
 
 ## Version 1.1 — monthly planning and quick capture
 
-Before updating, export a full personal backup and close other Nela tabs. Reopen the app online and use the **Update app** banner when it appears. Version 1.1 originally introduced data format 3. The current release upgrades earlier ledgers to format 4 as described above. Older application versions reject that newer format rather than saving a truncated ledger. Keep the same URL and browser context to retain the local database.
+Before updating, export a full personal backup and close other Nela tabs. Reopen the app online and use the **Update app** banner when it appears. Version 1.1 originally introduced data format 3. Version 1.2 upgraded earlier ledgers to format 4; the current release upgrades to format 5 as described above. Older application versions reject that newer format rather than saving a truncated ledger. Keep the same URL and browser context to retain the local database.
 
 ### Quick entry
 

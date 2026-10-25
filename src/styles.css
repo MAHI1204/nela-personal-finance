@@ -12,3 +12,18 @@
 .report-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 16px}.report-controls .field{min-width:0}.report-table{max-height:520px}.allocation-row{padding:14px;border:1px solid var(--line);border-radius:12px;margin:14px 0;background:#f8faf4}.trend-list{margin:24px 0}.trend-row{display:grid;grid-template-columns:66px minmax(40px,1fr) 110px 130px;align-items:center;gap:12px;margin:16px 0;font-size:12px}.trend-track{height:14px;background:#f0f4e9;border-radius:5px;overflow:hidden}.trend-track i{display:block;height:100%;background:#7ea959;border-radius:5px}.trend-row strong{text-align:right}.sidebar nav{overflow-y:auto;min-height:0}.sidebar-bottom{padding-top:10px;flex-shrink:0}.sidebar .brand-sub{margin-bottom:22px}.panel-head{flex-wrap:wrap}
 @media(max-width:780px){.report-controls{grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px}.trend-row{grid-template-columns:55px minmax(25px,1fr) 95px;gap:8px;font-size:11px}.trend-row small{grid-column:2/-1}.allocation-row{padding:12px}.report-controls .field>span{min-height:25px}.panel .comparison strong{overflow-wrap:anywhere}.sidebar{padding-top:20px}.sidebar nav{gap:2px}.sidebar nav button{padding:11px}.sidebar .brand-sub{margin-bottom:12px}}
 @media(max-width:390px){.report-controls{grid-template-columns:1fr}.report-controls .field>span{min-height:0}.form-grid{gap:8px}}
+
+/* Financial summaries are real navigation controls, including on touch devices. */
+.summary-link{display:block;text-align:left;width:100%;font:inherit;color:inherit;cursor:pointer;border:1px solid var(--line,#e2e5df);background:var(--paper,#fff)}
+.summary-link:hover{box-shadow:0 4px 18px #173d3514;transform:translateY(-1px)}
+.summary-link:focus-visible{outline:3px solid #467b69;outline-offset:3px}
+.summary-link.hero{background:#173d35;color:#fff;position:relative;overflow:hidden}
+.summary-link strong,.summary-link small{display:block}
+.debt-dashboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:20px}
+.debt-dashboard .stat-value{font-size:clamp(20px,2vw,30px);margin:15px 0}
+.debt-record{padding:22px 0;border-top:1px solid #e2e5df}
+.debt-record h3{margin:0}.debt-totals{grid-template-columns:repeat(2,minmax(0,1fr))}.debt-totals .summary-link{padding:24px;border-radius:16px}.debt-totals strong{font-size:30px;margin-top:10px}
+.account-card .actions-inline{flex-wrap:wrap}.account-card details{margin-top:18px}
+[hidden]{display:none!important}
+@media(max-width:1000px){.debt-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:550px){.debt-record>.split{align-items:flex-start;flex-direction:column;gap:10px}.debt-totals strong{font-size:24px}.debt-dashboard{gap:10px}.debt-dashboard .stat{padding:15px}.debt-dashboard small{font-size:11px}.drill-row{gap:12px;flex-wrap:wrap}}
