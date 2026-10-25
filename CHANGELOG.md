@@ -1,5 +1,15 @@
 # Changes
 
+## 1.4.0
+
+- Add Pay monthly bill with full/minimum/custom amounts and explicit source-transaction allocations.
+- Review and allocate existing payments/refunds without duplicate cash movements.
+- Track carried balances, old/new billed portions, partial/paid status and unapplied credits.
+- Consolidate friend repayments across original records into one account movement.
+- Reconcile monthly opening, new principal, existing balances, repayments, adjustments and closing amounts by direction and person.
+- Expand monthly card reports and CSV/PDF exports with opening/closing balances and bill allocations.
+- Migrate formats 2–5 to format 6 while preserving existing financial history.
+
 ## 1.3.0
 
 - Dedicated Credit Cards workspace with statements, payment entry, limits, activity and reconciliation.

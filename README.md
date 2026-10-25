@@ -14,7 +14,43 @@ Use the installed app consistently: each device/browser has its own ledger, with
 
 Official instructions: [Apple](https://support.apple.com/guide/iphone/iphea86e5236/ios) · [Google Chrome](https://support.google.com/chrome/answer/9658361?co=GENIE.Platform%3DAndroid&hl=en).
 
-## Version 1.3 — credit cards and Owe & Owed
+## Version 1.4 — pay monthly bills and reconcile old/new debt
+
+Export a personal JSON backup, close other Nela tabs and update the installed app online. Formats 2–5 migrate to format 6 without changing account movements or original loan dates. Older versions reject format 6. This remains a device-local app; cross-device sync is unchanged.
+
+### Pay a credit card monthly bill
+
+In **Credit Cards**, choose **Pay monthly bill** (or **Pay this bill** on a statement). Select the statement, full remaining / minimum remaining / custom payment, funding account, actual payment date and optional reference. Saving creates one bank/cash/savings-to-card transfer and explicit allocations to that bill. Partial payments show Partially paid; a zero remaining bill shows Paid. Any excess is retained as an unallocated card credit. This records an actual payment; it never sends money or creates another expense.
+
+The minimum option is a tracked estimate based on the issuer minimum you entered, reduced by recorded cash payments allocated to that bill since closing and capped to its remaining amount. Verify the amount actually required with your issuer; Nela does not determine issuer interest, minimum rules or payment priority. Refunds are not assumed to satisfy a minimum cash payment.
+
+**Existing payments need review once:** **Allocate existing credits** lists recorded payments/refunds and their allocated/unallocated amounts. Assign a credit to eligible statements without creating a second account movement. A credit cannot be allocated beyond its amount, and a bill cannot receive more than its new billed portion. A refund changes the card balance when recorded but reduces a specific bill only after allocation. Previously inferred statement remaining amounts are replaced by explicit allocations; account balances and recorded transfers remain unchanged.
+
+To edit/delete the underlying transaction of an allocated credit, open its allocation screen, set allocations to zero and save first; reopen and choose **Edit underlying transaction**. Statements with allocations or later carry-forward links must be unlinked before deletion. Deleting a statement never deletes a recorded card payment.
+
+### Previous unpaid bills and carried balances
+
+The card workspace shows every statement, due date, status and remaining amount, alongside current unbilled charges and total account debt. Copy the **full statement amount** from your issuer. If it includes an earlier unpaid bill, select that earlier statement and enter its remaining amount as of the new closing date in **Carried amount included in the statement total**. This is part of the total, not an extra charge. The new billed portion is statement amount minus carried amount.
+
+A payment to a carried bill is allocated to the older billed portion first, then to the newer portion, using one transfer. Older/current bill remaining amounts can overlap because the later bill includes carry; do not sum them. The account balance is the total card debt. A statement has only one carry-forward successor. If correcting an older payment changes the carry amount at a later closing date, temporarily remove that later statement’s carry link, correct the allocation, then restore the verified link/amount.
+
+Charges remain spending in their purchase month. Paying a previous month’s bill is cash movement in the payment month, excluded from spending. No missed-payment interest or fees are invented.
+
+### One repayment across several friend records
+
+In **Owe & Owed**, choose **Repay several records** or **Receive combined repayment**. Select one person/direction/currency, the actual total, date and account. Enter the allocation against each original record, or choose **Suggest oldest first**, then review. Allocations must total the actual payment exactly and cannot exceed outstanding principal. Opposite directions and currencies remain separate.
+
+Saving produces one account movement and separate principal allocations. History labels each allocation as part of a combined repayment; editing one opens the entire combined repayment. You can edit or delete the whole payment. Remove/edit combined repayments before deleting an original debt they reference. Legacy single-record repayments are preserved unchanged. New borrowing/lending still creates a new original record, never rewrites an older loan.
+
+### Monthly opening and closing balances
+
+The Friends report and CSV/PDF exports show, separately for I owe and Owed to me:
+
+**Opening outstanding + new borrowing/lending + existing balances added − principal repayments − gifts/forgiveness = closing outstanding.**
+
+A per-person table provides the same reconciliation. Existing balances added are displayed separately because they create no cash movement. Repayments of earlier loans remain this month’s cash activity, linked to the original records. The card report includes opening signed balance, new charges, credits and closing signed balance, statement statuses and payment allocation dates. Negative signed card balances mean debt. Reports use actual recorded dates and cap snapshots to today.
+
+## Version 1.3 — credit cards and Owe & Owed (historical behaviour)
 
 Before updating, export a personal JSON backup and close other Nela tabs. Reopen online and choose **Update app** when offered. Existing format-2, format-3 and format-4 ledgers migrate to format 5, preserving existing records and supplying empty lending/statement collections. The next save uses format 5; previous app versions reject that format. Keep your existing app URL and browser context.
 
@@ -22,7 +58,7 @@ Before updating, export a personal JSON backup and close other Nela tabs. Reopen
 
 Open **Credit Cards** in navigation. Add or edit a card account, record purchases, record a bank-to-card transfer, add issuer statements, inspect activity, or open reconciliation with that card selected. Card purchases count as expenses; repayments are transfers, never another expense. Negative opening balances represent existing card debt. Available credit is displayed separately from cash you own.
 
-Copy the closing date, due date, statement amount and minimum from your issuer's statement. Statements are checkpoints, not transactions; saving one does not change a balance. For the latest statement on or before the displayed date, tracked remaining is its amount minus credits recorded strictly after closing. Unbilled charges are recorded debits after closing, before credits. Closing-date entries count as billed. Verify issuer payment/refund allocation and minimum-payment rules yourself. Nela does not calculate card interest. Enter actual interest and fees as expenses. Do not import a card payment again when its transfer is already recorded.
+Copy the closing date, due date, statement amount and minimum from your issuer's statement. Statements are checkpoints, not transactions; saving one does not change a balance. Version 1.3 inferred the latest statement’s remaining amount from credits after closing. Version 1.4 replaces this inference with explicit allocations, described above. Unbilled charges are recorded debits after closing, before credits. Closing-date entries count as billed. Verify issuer payment/refund allocation and minimum-payment rules yourself. Nela does not calculate card interest. Enter actual interest and fees as expenses. Do not import a card payment again when its transfer is already recorded.
 
 ### Owe & Owed
 

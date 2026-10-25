@@ -27,3 +27,4 @@
 [hidden]{display:none!important}
 @media(max-width:1000px){.debt-dashboard{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:550px){.debt-record>.split{align-items:flex-start;flex-direction:column;gap:10px}.debt-totals strong{font-size:24px}.debt-dashboard{gap:10px}.debt-dashboard .stat{padding:15px}.debt-dashboard small{font-size:11px}.drill-row{gap:12px;flex-wrap:wrap}}
+.bill-record{padding:16px 0;border-top:1px solid var(--line,#e2e5df)}.bill-record p{font-size:12px;line-height:1.7}.bill-record .split{gap:12px;flex-wrap:wrap}
